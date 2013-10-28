@@ -3,14 +3,15 @@ class HomeScreen < PM::WebScreen
   title "Quick Webscreen Reference"
 
   def will_present
-    self.set_credentials("username","password")
+    $junk = self
   end
 
   def content
     # You can return:
     #  1. A reference to a file placed in your resources directory
     #  2. An instance of NSURL
-    NSURL.URLWithString("http://www.yahoo.com")
+    self.set_credentials("admin","testtest")
+    NSURL.URLWithString("http://a1dp.com/auth/index.html")
   end
 
   def load_started
