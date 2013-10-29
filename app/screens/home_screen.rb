@@ -11,8 +11,8 @@ class HomeScreen < PM::WebScreen
     #  1. A reference to a file placed in your resources directory
     #  2. An instance of NSURL
     self.set_credentials("admin","testtest")
-    p "Creds set"
     NSURL.URLWithString("http://a1dp.com/auth/index.html")
+    #NSURL.URLWithString("http://www.yahoo.com")
   end
 
   def load_started
