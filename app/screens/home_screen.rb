@@ -1,33 +1,27 @@
-class HomeScreen < PM::WebScreen
+class HomeScreen < PM::GroupedTableScreen
 
-  title "Quick Webscreen Reference"
+ title "Help"
 
-  def will_present
-    $junk = self
+  def will_appear
+    set_nav_bar_button :left, title: "Close", action: :close_tapped
   end
 
-  def content
-    # You can return:
-    #  1. A reference to a file placed in your resources directory
-    #  2. An instance of NSURL
-    self.set_credentials("admin","testtest")
-    p "Creds set"
-    NSURL.URLWithString("http://a1dp.com/auth/index.html")
+  def table_data
+    [{
+      title: "Get Help",
+      cells: [
+        { title: "Email us", action: :email_us },
+        { title: "Dummy cell" }
+      ]
+    }]
   end
 
-  def load_started
-    # Optional
-    # Called when the request starts to load
+  def email_us
+    mailto_link = NSURL.URLWithString("mailto:jamon@clearsightstudio.com")
+    UIApplication.sharedApplication.openURL(mailto_link)
   end
 
-  def load_finished
-    # Optional
-    # Called when the request is finished
+  def close_tapped
+    close
   end
-
-  def load_failed(error)
-    # Optional
-    # "error" is an instance of NSError
-  end
-
 end
